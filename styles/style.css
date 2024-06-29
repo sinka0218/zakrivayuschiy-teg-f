@@ -13,6 +13,9 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
+/* * {
+  outline: 0.5px solid red;
+} */
 
 .page {
   min-inline-size: 320px;
@@ -21,22 +24,26 @@
   background-image: var(--bg-image);
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   color: var(--accent-color);
   font-family: var(--font__var, sans-serif);
   font-size: 18px;
-  line-height: calc(18px / 21px);
-
+  line-height: 1.175em;
 }
 
 @supports (font-variation-settings: normal) {
   .page {
     font-family: var(--font__var, sans-serif);
-    font-weight: var(--fs-min);
+    font-variation-settings: "wght" var(--fs-min);
+  }
+  
+  .card__title {
+    font-variation-settings: "wght" var(--fs-max);
   }
 }
 
 .content {
-  margin: 0 auto;
+  margin-inline: auto;
   inline-size: var(--content-size);
 }
 
@@ -45,14 +52,15 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 20px;
+  row-gap: 20px;
   background-color: var(--bg-color);
-  font-family: var(--font-fam__accent, sans-serif);
+  font-family: var(--font-fam__accent, fantasy);
   text-align: center;
   margin-block: 100px;
-  block-size: clamp(20.438rem, 19.535rem + 3.85vw, 23rem);
+  min-block-size: clamp(20.438rem, 19.535rem + 3.85vw, 23rem);
   text-transform: uppercase;
   border: 2px solid var(--accent-color);
+  line-height: normal;
 }
 
 .logo {
@@ -151,7 +159,6 @@
 
 .card__image {
   position: relative;
-  block-size: var(--content-size);
   border-block: 2px solid var(--accent-color);
 }
 
@@ -159,7 +166,7 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  font-family: var(--font-fam__accent, sans-serif);
+  font-family: var(--font-fam__accent, fantasy);
   font-size: 14px;
   text-transform: uppercase;
   text-shadow: 0 0 1px var(--text-stroke);
@@ -176,9 +183,11 @@
 }
 
 .image {
+  display: block;
+  object-position: center;
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .card__article {
@@ -192,7 +201,7 @@
   display: flex;
   align-items: center;
   justify-content: end;
-  gap: 8px;
+  gap: 5px;
   margin-inline-end: 25px;
   margin-block-end: 25px;
 }
@@ -201,11 +210,11 @@
   cursor: pointer;
   position: relative;
   color: var(--accent-color);
-  font-family: var(--font-fam__accent, sans-serif);
+  font-family: var(--font-fam__accent, fantasy);
   font-size: 14px;
   background-color: var(--bg-color);
   border: 2px solid var(--accent-color);
-  transition: box-shadow 0.3s transform 0.3s;
+  transition: box-shadow 0.3s transform 0.3s ease;
 
   &:focus {
     outline: none;
@@ -213,7 +222,6 @@
 
   &:focus-visible {
     box-shadow: 2px 2px 0 var(--accent-color);
-    transition: ease 0.3s;
   }
 
   &::before {
@@ -242,14 +250,14 @@
 
 .card__like-button {
   min-inline-size: 130px;
-  min-block-size: 38px;
+  min-block-size: 37px;
 }
 
 .floppy__img {
   color: var(--mix-blend-mode);
   mix-blend-mode: difference;
-  inline-size: 28px;
-  block-size: 28px;
+  inline-size: 21px;
+  block-size: 21px;
 }
 
 .card__icon-button {
@@ -289,31 +297,31 @@
 
 /* фильтерс */
 
-.bright__f {
+.filter__brightness {
   filter: brightness(300%);
 }
 
-.glisal__f {
+.filter__grayscale {
   filter: grayscale(100%);
 }
 
-.saturate__f {
+.filter__saturate {
   filter: saturate(250%);
 }
 
-.sepia__f {
+.filter__sepia {
   filter: sepia(200%);
 }
 
-.invert__f {
+.filter__invert {
   filter: invert(1);
 }
 
-.colorful__f {
+.filter__colorful {
   filter: invert(1) brightness(200%) saturate(60%) hue-rotate(90deg);
 }
 
-.multy__f {
+.filter__multy {
   filter: sepia(1) contrast(2) brightness(200%);
 }
 
@@ -321,15 +329,16 @@
 
 #dialog {
   inline-size: 357px;
-  block-size: 193px;
   border: solid 2px var(--accent-color);
   background-color: var(--bg-color);
   text-transform: uppercase;
 }
+
 #dialog[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
   justify-content: space-between;
   padding: 30px;
 }
@@ -349,51 +358,55 @@
 }
 
 .dialog__text {
-  font-family: var(--font-fam__accent);
+  font-family: var(--font-fam__accent, fantasy);
   font-size: 14px;
   line-height: 1.6em;
   inline-size: 234px;
-  block-size: 63px;
 }
 
 .dialog__button {
   inline-size: 293px;
   block-size: 38px;
-  border:2px solid var(--accent-color);
+  border: 2px solid var(--accent-color);
   text-transform: uppercase;
 }
 
 @media (320px < width < 426px) {
 
   :root {
-     --content-size: 100vw;
- }
+    --content-size: 100%;
+  }
 
- .label {
-     right: 11px;
- }
- 
- .contener__save {
-     flex-direction: column;
-     min-block-size: 84px;
-     min-inline-size: 306px;
-   
- }
+  .label {
+    right: 11px;
+  }
 
- #dialog {
-  inline-size: 341px;
- }
+  .contener__save {
+    flex-direction: column;
+    min-block-size: 84px;
+    min-inline-size: 306px;
+  }
 
- .dialog__contener {
-     /* padding-inline: 40px; */
-     inline-size: 257px;
- }
+  #dialog {
+    inline-size: 341px;
+  }
 
- .dialog__button {
-     inline-size: 257px;
- }
+  #dialog[open] .dialog__content {
+    gap: 12px;
+  }
 
- .dialog__text {
-     inline-size: 198px;
- }
+  .dialog__button {
+    inline-size: 100%;
+  }
+
+  .dialog__text {
+    inline-size: 198px;
+  }
+
+  .floppy__img {
+    color: var(--mix-blend-mode);
+    mix-blend-mode: difference;
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
