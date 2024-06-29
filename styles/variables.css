@@ -1,1 +1,24 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --bg-color: #000028;
+  --text-dec-color: var(--bg-color);
+  --main-color: #ff0070;
+  --decor-color: var(--main-color);
+  --title-color: #db00ff;
+  --text-color: #f1b2ce;
+  --shadow-color: var(--main-color);
+  --text-shadow: var(--main-color);
+  --rec: visible;
+  --hover-shadow: #32312d40;
+  --bg-img: url("../images/cover-image-dark.png");
+  --font: 18px/1.3 "IBM Plex mono", monospace, sans-serif;
+  --font_title: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  --otstup: 20px;
+  --border: 1px solid var(--main-color);
+}
+
+@media (320px <= width < 768px) {
+  :root {
+    --otstup: 10px;
+    --font_title: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
