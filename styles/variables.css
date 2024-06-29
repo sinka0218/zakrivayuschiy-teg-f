@@ -1,24 +1,16 @@
+/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-  --bg-color: #000028;
-  --text-dec-color: var(--bg-color);
-  --main-color: #ff0070;
-  --decor-color: var(--main-color);
-  --title-color: #db00ff;
-  --text-color: #f1b2ce;
-  --shadow-color: var(--main-color);
-  --text-shadow: var(--main-color);
-  --rec: visible;
-  --hover-shadow: #32312d40;
-  --bg-img: url("../images/cover-image-dark.png");
-  --font: 18px/1.3 "IBM Plex mono", monospace, sans-serif;
-  --font_title: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  --otstup: 20px;
-  --border: 1px solid var(--main-color);
-}
-
-@media (320px <= width < 768px) {
-  :root {
-    --otstup: 10px;
-    --font_title: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  }
+    --fs-min: 400;
+    --fs-max: 700;
+    --font__var: 'Inter-Variable', sans-serif;
+    --font-fam__accent: 'PressStart2P', sans-serif;
+    --text-stroke: #fff;
+    --accent-color: #000;
+    --bg-color: #fff;
+    --mix-blend-mode: #fff;
+    --heart: #FF0000;
+    --bg-image: repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    --content-size: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
 }
