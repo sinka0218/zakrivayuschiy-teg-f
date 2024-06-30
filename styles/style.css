@@ -57,7 +57,7 @@
   font-family: var(--font-fam__accent, fantasy);
   text-align: center;
   margin-block: 100px;
-  min-block-size: clamp(20.438rem, 19.535rem + 3.85vw, 23rem);
+  padding-block-start: 136px;
   text-transform: uppercase;
   border: 2px solid var(--accent-color);
   line-height: normal;
@@ -377,7 +377,12 @@
     --content-size: 100%;
   }
 
+  .header {
+    padding-block-start: 120px;
+  }
+
   .label {
+    top: 14px;
     right: 11px;
   }
 
